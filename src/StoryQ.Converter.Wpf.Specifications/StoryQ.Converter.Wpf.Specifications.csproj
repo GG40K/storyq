@@ -36,6 +36,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile />
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Keys\StoryQ.snk</AssemblyOriginatorKeyFile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>

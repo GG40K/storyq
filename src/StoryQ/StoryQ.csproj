@@ -15,7 +15,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>StoryQ.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Keys\StoryQ.snk</AssemblyOriginatorKeyFile>
     <ExpressionBlendVersion>4.0.20421.0</ExpressionBlendVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -154,8 +154,6 @@
     </None>
     <None Include="FluentInterface\rundot.bat" />
     <None Include="FluentInterface\StoryQ.txt.svg" />
-    <None Include="StoryQ.public.snk" />
-    <None Include="StoryQ.snk" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
