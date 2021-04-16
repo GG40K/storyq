@@ -29,7 +29,6 @@ namespace StoryQ.Converter.Wpf.Model.CodeGen
             {
                 this.child.Generate(fragments, writer);
             }
-           
         }
     }
 }

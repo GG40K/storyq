@@ -8,7 +8,6 @@
     [AttributeUsage(AttributeTargets.Parameter)]
     public abstract class ParameterFormatAttribute : Attribute
     {
-
         /// <summary>
         /// Override this method to provide a custom format for any given parameter value.
         /// </summary>
@@ -17,5 +16,3 @@
         public abstract string Format(object value);
     }
 }
-
-

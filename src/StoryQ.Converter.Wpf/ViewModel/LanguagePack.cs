@@ -67,7 +67,6 @@
             }
             this.DownloadProgress = 1;
             this.FirePropertyChanged("IsDownloaded");
-            
         }
     }
 }

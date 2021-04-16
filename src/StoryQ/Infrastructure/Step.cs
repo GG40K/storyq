@@ -63,7 +63,6 @@
         /// </summary>
         public List<string> Tags => this.tags ?? (this.tags = new List<string>());
 
-
         /// <summary>
         /// Executes this Step.
         /// </summary>
@@ -102,7 +101,7 @@
         /// Gets a value indicating whether this instance is executable.
         /// </summary>
         /// <value>
-        /// 	<c>true</c> if this instance is executable; otherwise, <c>false</c>.
+        ///     <c>true</c> if this instance is executable; otherwise, <c>false</c>.
         /// </value>
         public bool IsExecutable => this.Action != DoNothing;
     }

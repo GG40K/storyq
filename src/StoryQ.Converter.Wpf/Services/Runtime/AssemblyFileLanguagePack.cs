@@ -29,7 +29,6 @@
 
         private object BuildEntryPoint()
         {
-
             var type = Utilities.GetCustomAttribute<ParserEntryPointAttribute>(Assembly.LoadFile(Path.GetFullPath(this.file))).Target;
             return Activator.CreateInstance(type);
         }

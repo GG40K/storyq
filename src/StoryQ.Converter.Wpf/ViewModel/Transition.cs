@@ -10,7 +10,6 @@ namespace StoryQ.Converter.Wpf.ViewModel
 
     public class Transition : ViewModelBase
     {
-
         private string text;
         private string description;
 

@@ -9,7 +9,6 @@
     /// </summary>
     internal class StepMethodsGenerator : ICodeGenerator
     {
-        
         public void Generate(IEnumerable<IStepContainer> fragments, CodeWriter writer)
         {
             var methods = fragments
@@ -17,7 +16,6 @@
                 .Where(x => x.IsExecutable)
                 .Select(x => GetMethodDeclaration(x))
                 .Distinct();
-
 
             foreach (var step in methods)
             {

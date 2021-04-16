@@ -7,8 +7,10 @@ namespace StoryQ.Converter.Wpf.Model.CodeGen
     /// </summary>
     internal class TestFrameworkData
     {
-        public IEnumerable<string> Imports { set; get; }
+        public IEnumerable<string> Imports { get; set; }
+
         public string TestMethodAttribute { get; set; }
+
         public string TestClassAttribute { get; set; }
     }
 }

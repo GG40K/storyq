@@ -49,7 +49,6 @@
                 this.LanguagePacks.Add(new LanguagePack(this, pack));
             }
 
-
             this.Convert();
         }
 
@@ -90,7 +89,6 @@
             }
         }
 
-
         public string ConvertedText
         {
             get
@@ -118,11 +116,13 @@
                 {
                     this.settings.PropertyChanged -= this.SettingsOnPropertyChanged;
                 }
+
                 this.settings = value;
                 if (this.settings != null)
                 {
                     this.settings.PropertyChanged += this.SettingsOnPropertyChanged;
                 }
+
                 this.Convert();
                 this.FirePropertyChanged("Settings");
             }
@@ -180,7 +180,6 @@
                     this.ConvertedText = "Awaiting content";
                 }
 
-
                 foreach (MethodInfo info in Parser.GetMethods(parsed))
                 {
                     this.Transitions.Add(new Transition(info, this));
@@ -221,6 +220,5 @@
                 h(this, EventArgs.Empty);
             }
         }
-
     }
 }

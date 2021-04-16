@@ -8,11 +8,12 @@
 
     public static class MethodBuilder
     {
-        private static readonly Dictionary<string, string> literalTypes = new Dictionary<string, string>
+        private static readonly Dictionary<string, string> literalTypes =
+            new Dictionary<string, string>
             {
-                {"(true)|(false)", "bool"},
-                {@"(-)?(0x?)?\d+", "int"},
-                {@"(-)?[0-9.]+", "double"},
+                { "(true)|(false)", "bool" },
+                { @"(-)?(0x?)?\d+", "int" },
+                { @"(-)?[0-9.]+", "double" },
             };
 
         public static Method ParseMethodDeclaration(string text)
@@ -26,6 +27,7 @@
                 {
                     name = "arg" + (args.Count + 1);
                 }
+
                 string type = GetArgType(ref value);
                 args.Add(new Parameter(type, name, value));
                 return "_";
@@ -42,6 +44,7 @@
                     return p.Value;
                 }
             }
+
             DateTime result;
             if (DateTime.TryParse(value, out result))
             {
@@ -49,6 +52,7 @@
 
                 return "DateTime";
             }
+
             value = '"' + value + '"';
             return "string";
         }

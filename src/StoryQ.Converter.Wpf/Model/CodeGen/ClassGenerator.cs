@@ -25,14 +25,15 @@ namespace StoryQ.Converter.Wpf.Model.CodeGen
             {
                 writer.WriteLine("using " + import + ";");
             }
+
             writer.WriteLine("");
             writer.WriteLine("[" + this.testFrameworkData.TestClassAttribute + "]");
             writer.WriteLine("public class StoryQTestClass");
+
             using (writer.CodeBlock())
             {
                 this.child.Generate(fragments, writer);
             }
-
         }
     }
 }

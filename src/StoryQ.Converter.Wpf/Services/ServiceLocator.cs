@@ -21,7 +21,6 @@
         {
             container = new Container();
 
-            
             container.Register<IErrorhandler, PromptingErrorhandler>().AsSingleton();
             container.Register<IFileSavingService, FileSavingService>().AsSingleton();
 
@@ -29,7 +28,6 @@
             if (DesignerProperties.GetIsInDesignMode(Application.Current.MainWindow))
             {
                 container.Register<ILanguagePackProvider, DesigntimeLanguagePackProvider>();
-                
             }
             else
             {
@@ -42,7 +40,6 @@
                     container.Register<ILanguagePackProvider, LocalLanguagePackProvider>();
                 }
             }
-           
         }
 
         public static T Resolve<T>() where T : class => container.Resolve<T>();
@@ -67,6 +64,7 @@
                 {
                     this.serviceNames[typeof(S)] = name;
                 }
+
                 return new DependencyManager(this, name, typeof(C));
             }
 
@@ -89,8 +87,7 @@
                     this.args = c.GetParameters()
                         .ToDictionary<ParameterInfo, string, Func<object>>(
                             x => x.Name,
-                            x => (() => container.services[container.serviceNames[x.ParameterType]]())
-                        );
+                            x => () => container.services[container.serviceNames[x.ParameterType]]());
 
                     container.services[name] = () => c.Invoke(this.args.Values.Select(x => x()).ToArray());
                 }
@@ -116,6 +113,5 @@
                 }
             }
         }
-
     }
 }

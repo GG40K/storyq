@@ -18,11 +18,12 @@
         internal static Func<string, Exception, Exception> CreateExceptionBuilder()
         {
             // TODO: add xunit and mbunit
-                        var config = new[]
-                             {
-                                 new { Class="Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException", Assembly="Microsoft.VisualStudio.QualityTools.UnitTestFramework"},
-                                 new { Class="NUnit.Framework.IgnoreException", Assembly="nunit.framework"},
-                             };
+            var config =
+                new[]
+                {
+                    new { Class="Microsoft.VisualStudio.TestTools.UnitTesting.AssertInconclusiveException", Assembly="Microsoft.VisualStudio.QualityTools.UnitTestFramework" },
+                    new { Class="NUnit.Framework.IgnoreException", Assembly="nunit.framework" },
+                };
 
             foreach (var v in config)
             {
@@ -49,6 +50,7 @@
                 var e = Expression.New(c, pm, pe);
                 return Expression.Lambda<Func<string, Exception, Exception>>(e, pm, pe).Compile();
             }
+
             return (x, y) => new NotSupportedException("You need to set StoryQ.ExceptionHelper.PendingExceptionBuilder manually in your test setup. See the property's documentation for more info");
         }
 

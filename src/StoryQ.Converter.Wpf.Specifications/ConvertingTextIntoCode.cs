@@ -1,5 +1,4 @@
-﻿
-#if NUNIT
+﻿#if NUNIT
 using NUnit.Framework;
 using TestClass = NUnit.Framework.TestFixtureAttribute;
 using TestMethod = NUnit.Framework.TestAttribute;
@@ -10,6 +9,7 @@ using ClassInitialize = NUnit.Framework.TestFixtureSetUpAttribute;
 #else
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 #endif
+
 namespace StoryQ.Converter.Wpf.Specifications
 {
     using Moq;
@@ -58,8 +58,8 @@ namespace StoryQ.Converter.Wpf.Specifications
                     .Then(this.IShouldSeeTheNumbersAndWordsPassedAsParametersToTheStoryqMethod)
                     .ExecuteWithReport();
         }
-	
-	 [TestMethod]
+
+        [TestMethod]
         public void ConvertingNegativeIntegerIntoCode()
         {
             this.Scenario
@@ -69,8 +69,8 @@ namespace StoryQ.Converter.Wpf.Specifications
                     .Then(this.IShouldSeeTheIntegerPassedAsAIntegerParameterToTheStoryqMethod)
                     .ExecuteWithReport();
         }
-	
-	 [TestMethod]
+
+        [TestMethod]
         public void ConvertingNegativeDoubleIntoCode()
         {
             this.Scenario
@@ -80,7 +80,6 @@ namespace StoryQ.Converter.Wpf.Specifications
                     .Then(this.IShouldSeeTheDoublePassedAsADoubleParameterToTheStoryqMethod)
                     .ExecuteWithReport();
         }
-	
 
         [TestMethod]
         public void ConvertingLinesWithComplexVariablesIntoCode()
@@ -92,7 +91,6 @@ namespace StoryQ.Converter.Wpf.Specifications
                     .Then(this.IShouldSeeTheDatesAndWordsPassedAsParametersToTheStoryqMethod)
                     .ExecuteWithReport();
         }
-
 
         [TestMethod]
         public void GeneratingTestMethods()
@@ -160,7 +158,6 @@ namespace StoryQ.Converter.Wpf.Specifications
             this.languagePackProvider.Setup(x => x.GetLocalLanguagePacks()).Returns(new[] { languagePack.Object });
             this.converter = new vm.Converter(this.fileSavingService.Object, this.languagePackProvider.Object);
         }
-
 
         private void IShouldHaveMyMSTestClassGenerated()
         {
@@ -320,8 +317,6 @@ public class StoryQTestClass
             this.ITypeInSomeScenarioText();
         }
 
-
-       
         private void ITypeInSomeStoryText()
         {
             this.converter.PlainText +=
@@ -362,50 +357,42 @@ then I should get a result";
 
         private void ITypeInSomeScenarioTextWithADollarSymbolBeforeANumberOrWord()
         {
-
             this.converter.PlainText +=
                 @"
 with scenario scenario name
 given that I have some initial state
 when I do something to the system $1 times
 then I should get a $result";
-
         }
-	
-	private void ITypeInSomeScenarioTextWithANegativeInteger()
-        {
 
+        private void ITypeInSomeScenarioTextWithANegativeInteger()
+        {
             this.converter.PlainText +=
                 @"
 with scenario scenario name
 given that I have some initial state
 when I do something to the system $-1 times
 then I should get a {-1}";
-
         }
-	
-	private void ITypeInSomeScenarioTextWithANegativeDouble()
-        {
 
+        private void ITypeInSomeScenarioTextWithANegativeDouble()
+        {
             this.converter.PlainText +=
                 @"
 with scenario scenario name
 given that I have some initial state
 when I do something to the system $-1.5 times
 then I should get a {-1.5}";
-
         }
 
         private void ITypeInSomeScenarioTextWithDatesAndStringsInCurlyBraces()
         {
-
             this.converter.PlainText +=
                 @"
 with scenario scenario name
 given that I have some initial state
 when I do something to the system from $2008-4-1 to {2008-4-1 12:59 GMT}
 then I should get a {nice result}";
-
         }
 
         private void IShouldSeeThatTextConvertedIntoMixedStoryqCalls()
@@ -437,7 +424,7 @@ then I should get a {nice result}";
                 .Then(IShouldGetA_, ""result"")
     .Execute();");
         }
-	
+
         private void IShouldSeeTheIntegerPassedAsAIntegerParameterToTheStoryqMethod()
         {
             this.Expect(
@@ -451,9 +438,9 @@ then I should get a {nice result}";
                 .When(IDoSomethingToTheSystem_Times, -1)
                 .Then(IShouldGetA_, -1)
     .Execute();");
-        }	
+        }
 
-	private void IShouldSeeTheDoublePassedAsADoubleParameterToTheStoryqMethod()
+        private void IShouldSeeTheDoublePassedAsADoubleParameterToTheStoryqMethod()
         {
             this.Expect(
                 @"new Story(""story name"")
@@ -467,6 +454,7 @@ then I should get a {nice result}";
                 .Then(IShouldGetA_, -1.5)
     .Execute();");
         }
+
         private void IShouldSeeTheDatesAndWordsPassedAsParametersToTheStoryqMethod()
         {
             this.Expect(
@@ -486,6 +474,5 @@ then I should get a {nice result}";
         {
             Assert.AreEqual(expected.Trim(), this.converter.ConvertedText.Trim());
         }
-
     }
 }

@@ -21,7 +21,6 @@ namespace StoryQ.Formatting.Methods
     /// <seealso cref="StoryQ.Formatting.Methods.MethodFormatAttribute" />
     public class ParameterSuffixedMethodFormatAttribute : MethodFormatAttribute
     {
-
         /// <summary>
         /// Formats a method by putting the parameters at the end (like a method call)
         /// </summary>

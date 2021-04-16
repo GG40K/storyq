@@ -33,6 +33,7 @@ namespace StoryQ.Infrastructure
         /// The step
         /// </summary>
         private readonly Step step;
+
         /// <summary>
         /// The parent
         /// </summary>
@@ -166,7 +167,7 @@ namespace StoryQ.Infrastructure
         /// <summary>
         /// This method has been overridden to hide it from the Fluent Interface. Don't call it!
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        /// <returns>A <see cref="string" /> that represents this instance.</returns>
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override string ToString() => base.ToString();
 
@@ -174,16 +175,10 @@ namespace StoryQ.Infrastructure
         /// This method has been overridden to hide it from the Fluent Interface. Don't call it!
         /// </summary>
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
+        /// Determines whether the specified <see cref="object" /> is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
-        /// <exception cref="System.NotSupportedException"></exception>
-        /// <summary>
-        /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The object to compare with the current object.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
         /// <exception cref="System.NotSupportedException"></exception>
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object obj)

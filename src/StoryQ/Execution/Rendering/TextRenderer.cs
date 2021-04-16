@@ -32,7 +32,6 @@ namespace StoryQ.Execution.Rendering
         public TextRenderer(TextWriter output)
         {
             this.output = output;
-
         }
 
         /// <summary>
@@ -90,7 +89,6 @@ namespace StoryQ.Execution.Rendering
                         buffer.Write(tags);
                         buffer.Write(")");
                     }
-
 
                     buffer.WriteLine();
                 }

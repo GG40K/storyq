@@ -1,0 +1,141 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TreatWarningsAsErrorsWorkaround Condition="'$(CodeAnalysisTreatWarningsAsErrors)' != 'true'">true</TreatWarningsAsErrorsWorkaround>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition=" '$(WarningsNotAsErrors)' != ''">
+      <PropertyGroup>
+        <WarningsNotAsErrors>$(WarningsNotAsErrors),612,618</WarningsNotAsErrors>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <WarningsNotAsErrors>612,618</WarningsNotAsErrors>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <ItemGroup Condition="'$(TreatWarningsAsErrorsWorkaround)' != ''">
+    <!--Style cop rules to exclude -->
+    <StyleCopRulesToExclude Include="SA0001" />
+    <StyleCopRulesToExclude Include="SA0002" />
+    <StyleCopRulesToExclude Include="SA1025" />
+    <StyleCopRulesToExclude Include="SA1101" />
+    <StyleCopRulesToExclude Include="SA1107" />
+    <StyleCopRulesToExclude Include="SA1135" />
+    <StyleCopRulesToExclude Include="SA1136" />
+    <StyleCopRulesToExclude Include="SA1137" />
+    <StyleCopRulesToExclude Include="SA1139" />
+    <StyleCopRulesToExclude Include="SA1208" />
+    <StyleCopRulesToExclude Include="SA1209" />
+    <StyleCopRulesToExclude Include="SA1210" />
+    <StyleCopRulesToExclude Include="SA1211" />
+    <StyleCopRulesToExclude Include="SA1213" />
+    <StyleCopRulesToExclude Include="SA1314" />
+    <StyleCopRulesToExclude Include="SA1404" />
+    <StyleCopRulesToExclude Include="SA1413" />
+    <StyleCopRulesToExclude Include="SA1515" />
+    <StyleCopRulesToExclude Include="SA1520" />
+
+    <!-- FxCop rules to exclude -->
+    <FxCopRulesToExclude Include="CA1001" />
+    <FxCopRulesToExclude Include="CA1016" />
+    <FxCopRulesToExclude Include="CA1018" />
+    <FxCopRulesToExclude Include="CA1031" />
+    <FxCopRulesToExclude Include="CA1032" />
+    <FxCopRulesToExclude Include="CA1041" />
+    <FxCopRulesToExclude Include="CA1043" />
+    <FxCopRulesToExclude Include="CA1044" />
+    <FxCopRulesToExclude Include="CA1049" />
+    <FxCopRulesToExclude Include="CA1052" />
+    <FxCopRulesToExclude Include="CA1058" />
+    <FxCopRulesToExclude Include="CA1060" />
+    <FxCopRulesToExclude Include="CA1061" />
+    <FxCopRulesToExclude Include="CA1063" />
+    <FxCopRulesToExclude Include="CA1064" />
+    <FxCopRulesToExclude Include="CA1065" />
+    <FxCopRulesToExclude Include="CA1066" />
+    <FxCopRulesToExclude Include="CA1068" />
+    <FxCopRulesToExclude Include="CA1200" />
+    <FxCopRulesToExclude Include="CA1307" />
+    <FxCopRulesToExclude Include="CA1308" />
+    <FxCopRulesToExclude Include="CA1309" />
+    <FxCopRulesToExclude Include="CA1400" />
+    <FxCopRulesToExclude Include="CA1401" />
+    <FxCopRulesToExclude Include="CA1403" />
+    <FxCopRulesToExclude Include="CA1404" />
+    <FxCopRulesToExclude Include="CA1415" />
+    <FxCopRulesToExclude Include="CA1507" />
+    <FxCopRulesToExclude Include="CA1710" />
+    <FxCopRulesToExclude Include="CA1714" />
+    <FxCopRulesToExclude Include="CA1715" />
+    <FxCopRulesToExclude Include="CA1720" />
+    <FxCopRulesToExclude Include="CA1721" />
+    <FxCopRulesToExclude Include="CA1724" />
+    <FxCopRulesToExclude Include="CA1801" />
+    <FxCopRulesToExclude Include="CA1802" />
+    <FxCopRulesToExclude Include="CA1806" />
+    <FxCopRulesToExclude Include="CA1810" />
+    <FxCopRulesToExclude Include="CA1811" />
+    <FxCopRulesToExclude Include="CA1812" />
+    <FxCopRulesToExclude Include="CA1814" />
+    <FxCopRulesToExclude Include="CA1815" />
+    <FxCopRulesToExclude Include="CA1816" />
+    <FxCopRulesToExclude Include="CA1820" />
+    <FxCopRulesToExclude Include="CA1821" />
+    <FxCopRulesToExclude Include="CA1823" />
+    <FxCopRulesToExclude Include="CA1825" />
+    <FxCopRulesToExclude Include="CA1826" />
+    <FxCopRulesToExclude Include="CA1827" />
+    <FxCopRulesToExclude Include="CA2002" />
+    <FxCopRulesToExclude Include="CA2006" />
+    <FxCopRulesToExclude Include="CA2007" />
+    <FxCopRulesToExclude Include="CA2008" />
+    <FxCopRulesToExclude Include="CA2009" />
+    <FxCopRulesToExclude Include="CA2100" />
+    <FxCopRulesToExclude Include="CA2101" />
+    <FxCopRulesToExclude Include="CA2111" />
+    <FxCopRulesToExclude Include="CA2119" />
+    <FxCopRulesToExclude Include="CA2124" />
+    <FxCopRulesToExclude Include="CA2153" />
+    <FxCopRulesToExclude Include="CA2200" />
+    <FxCopRulesToExclude Include="CA2207" />
+    <FxCopRulesToExclude Include="CA2208" />
+    <FxCopRulesToExclude Include="CA2211" />
+    <FxCopRulesToExclude Include="CA2213" />
+    <FxCopRulesToExclude Include="CA2214" />
+    <FxCopRulesToExclude Include="CA2215" />
+    <FxCopRulesToExclude Include="CA2216" />
+    <FxCopRulesToExclude Include="CA2219" />
+    <FxCopRulesToExclude Include="CA2220" />
+    <FxCopRulesToExclude Include="CA2221" />
+    <FxCopRulesToExclude Include="CA2225" />
+    <FxCopRulesToExclude Include="CA2226" />
+    <FxCopRulesToExclude Include="CA2229" />
+    <FxCopRulesToExclude Include="CA2231" />
+    <FxCopRulesToExclude Include="CA2232" />
+    <FxCopRulesToExclude Include="CA2235" />
+    <FxCopRulesToExclude Include="CA2236" />
+    <FxCopRulesToExclude Include="CA2237" />
+    <FxCopRulesToExclude Include="CA2238" />
+    <FxCopRulesToExclude Include="CA2241" />
+    <FxCopRulesToExclude Include="CA2242" />
+    <FxCopRulesToExclude Include="CA2243" />
+    <FxCopRulesToExclude Include="CA2244" />
+    <FxCopRulesToExclude Include="CA2245" />
+    <FxCopRulesToExclude Include="CA3075" />
+    <FxCopRulesToExclude Include="CA3076" />
+    <FxCopRulesToExclude Include="CA3077" />
+    <FxCopRulesToExclude Include="CA5350" />
+    <FxCopRulesToExclude Include="CA5351" />
+    <FxCopRulesToExclude Include="CA5366" />
+    <FxCopRulesToExclude Include="CA5371" />
+    <FxCopRulesToExclude Include="CA5372" />
+    <FxCopRulesToExclude Include="CA9999" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TreatWarningsAsErrorsWorkaround)' != ''">
+    <WarningsNotAsErrors>$(WarningsNotAsErrors),@(FxCopRulesToExclude, ','),@(StyleCopRulesToExclude, ',')</WarningsNotAsErrors>
+  </PropertyGroup>
+</Project>

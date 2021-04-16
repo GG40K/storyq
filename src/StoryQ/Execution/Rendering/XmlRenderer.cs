@@ -69,19 +69,20 @@ namespace StoryQ.Execution.Rendering
             }
 
             var v = from x in results
-                    select new XElement("Result",
-                                        x.Exception != null && x.Type == ResultType.Failed
-                                            ? new XElement(
-                                                "Exception",
-                                                           new XAttribute("ID", this.idSource()),
-                                                           new XAttribute("Message", x.Exception.Message),
-                                                           new XCData(x.Exception.ToString()))
-                                            : null,
-                                        new XAttribute("IndentLevel", x.IndentLevel),
-                                        new XAttribute("Prefix", x.Prefix),
-                                        new XAttribute("Text", x.Text),
-                                        new XAttribute("Type", x.Type),
-                                        x.Tags.Select(tag => new XElement("Tag", tag)));
+                    select new XElement(
+                        "Result",
+                        x.Exception != null && x.Type == ResultType.Failed
+                            ? new XElement(
+                                "Exception",
+                                new XAttribute("ID", this.idSource()),
+                                new XAttribute("Message", x.Exception.Message),
+                                new XCData(x.Exception.ToString()))
+                            : null,
+                        new XAttribute("IndentLevel", x.IndentLevel),
+                        new XAttribute("Prefix", x.Prefix),
+                        new XAttribute("Text", x.Text),
+                        new XAttribute("Type", x.Type),
+                        x.Tags.Select(tag => new XElement("Tag", tag)));
 
             this.receptacle.Add(new XElement("Story", new XAttribute("Name", results.First().Text), v));
         }

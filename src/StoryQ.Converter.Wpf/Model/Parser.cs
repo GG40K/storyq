@@ -20,12 +20,11 @@
 
                 if (string.IsNullOrEmpty(line)) continue;
 
-
                 var v = from m in GetMethods(root)
                         from s in GetNames(m)
-                        orderby s.Length descending 
+                        orderby s.Length descending
                         where line.StartsWith(s, IgnoreCase)
-                        select new {Method = m, Name = s};
+                        select new { Method = m, Name = s };
 
                 var match = v.FirstOrDefault();
                 if (match == null)
@@ -52,12 +51,13 @@
             }
         }
 
-        public static IEnumerable<MethodInfo> GetMethods(object o) => from m in o.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-                                                                      where m.ReturnType != typeof(void)
-                                                                      where m.GetCustomAttribute<DescriptionAttribute>() != null
-                                                                      where m.GetParameters().Select(x => x.ParameterType).SequenceEqual(new[] { typeof(string) })
-                                                                      orderby m.Name.Length descending
-                                                                      select m;
+        public static IEnumerable<MethodInfo> GetMethods(object o) =>
+            from m in o.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+            where m.ReturnType != typeof(void)
+            where m.GetCustomAttribute<DescriptionAttribute>() != null
+            where m.GetParameters().Select(x => x.ParameterType).SequenceEqual(new[] { typeof(string) })
+            orderby m.Name.Length descending
+            select m;
 
         public class ParseException : ArgumentException
         {
@@ -67,5 +67,4 @@
             }
         }
     }
-
 }

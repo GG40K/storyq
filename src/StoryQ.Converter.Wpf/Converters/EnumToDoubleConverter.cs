@@ -17,7 +17,7 @@ namespace StoryQ.Converter.Wpf.Converters
     /// Class EnumToDoubleConverter.
     /// </summary>
     /// <seealso cref="System.Windows.Data.IValueConverter" />
-    [ValueConversion(typeof(Enum),typeof(double))]
+    [ValueConversion(typeof(Enum), typeof(double))]
     public class EnumToDoubleConverter : IValueConverter
     {
         /// <summary>

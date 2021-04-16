@@ -1,6 +1,7 @@
 ﻿namespace StoryQ.Converter.Wpf.ViewModel
 {
     using System.Collections.Generic;
+
     using StoryQ.Converter.Wpf.Model.CodeGen;
 
     public class ConversionSettings : ViewModelBase
@@ -11,18 +12,24 @@
 
         private readonly Dictionary<TestFramework, TestFrameworkData> testFrameworks = new Dictionary<TestFramework, TestFrameworkData>
             {
-                {TestFramework.MSTest, new TestFrameworkData
+                {
+                    TestFramework.MSTest,
+                    new TestFrameworkData
                     {
-                        Imports = new[]{"Microsoft.VisualStudio.TestTools.UnitTesting"}, 
-                        TestClassAttribute = "TestClass", 
-                        TestMethodAttribute = "TestMethod"
-                    }},
-                {TestFramework.NUnit, new TestFrameworkData
+                        Imports = new[] { "Microsoft.VisualStudio.TestTools.UnitTesting" },
+                        TestClassAttribute = "TestClass",
+                        TestMethodAttribute = "TestMethod",
+                    }
+                },
+                {
+                    TestFramework.NUnit,
+                    new TestFrameworkData
                     {
-                        Imports = new[]{"NUnit.Framework"}, 
-                        TestClassAttribute = "TestFixture", 
-                        TestMethodAttribute = "Test"
-                    }}
+                        Imports = new[] { "NUnit.Framework" },
+                        TestClassAttribute = "TestFixture",
+                        TestMethodAttribute = "Test",
+                    }
+                },
             };
 
         public GenerationLevel Level
@@ -72,14 +79,17 @@
             {
                 gen = new TestMethodGenerator(gen, testFramework);
             }
+
             if (this.Level >= GenerationLevel.TestMethodAndStepStubs)
             {
                 gen = new AggregateCodeGenerator(gen, new StepMethodsGenerator());
             }
+
             if (this.Level >= GenerationLevel.Class)
             {
                 gen = new ClassGenerator(gen, testFramework);
             }
+
             return gen;
         }
     }

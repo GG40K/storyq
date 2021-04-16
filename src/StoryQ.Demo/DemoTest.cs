@@ -1,5 +1,4 @@
-﻿
-#if NUNIT
+﻿#if NUNIT
 using TestClass = NUnit.Framework.TestFixtureAttribute;
 using TestMethod = NUnit.Framework.TestAttribute;
 using TestCleanup = NUnit.Framework.TearDownAttribute;
@@ -55,7 +54,6 @@ namespace StoryQ.Demo
                 // because the following method throws NotImplementedException, this step counts as pending:
                 .Then(this.TheForm_BePostedOverHttpsPending, true).Tag("this one ought to pend")
                 .ExecuteWithReport(MethodBase.GetCurrentMethod());
-
         }
 
         [TestMethod]
@@ -73,7 +71,6 @@ namespace StoryQ.Demo
                 // because it's passing a string into an excecutable step (which normallly expects a method is expected), this step counts as pending:
                 .Then("The form should be posted over https").Tag("this one ought to pend")
                 .ExecuteWithReport(MethodBase.GetCurrentMethod());
-
         }
 
         [TestMethod]
@@ -100,7 +97,6 @@ namespace StoryQ.Demo
         private void TheForm_BePostedOverHttps([BooleanParameterFormat("should", "should not")]bool isHttps)
         {
         }
-
 
         private void TheBrowserPostsMyCreditCardNumberOverTheInternet()
         {

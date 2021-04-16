@@ -30,22 +30,21 @@ namespace StoryQ.Execution.Rendering
         /// </summary>
         private static readonly Dictionary<string, Func<MethodBase, string>> chain = new Dictionary<string, Func<MethodBase, string>>
             {
-                { "Project", info => info.DeclaringType.Assembly.GetName().Name},
-                { "Namespace", info => info.DeclaringType.Namespace},
-                { "Class", info => info.DeclaringType.Name},
-                { "Method", info => info.Name},
+                { "Project", info => info.DeclaringType.Assembly.GetName().Name },
+                { "Namespace", info => info.DeclaringType.Namespace },
+                { "Class", info => info.DeclaringType.Name },
+                { "Method", info => info.Name },
             };
 
-        /// <summary>
-        /// The exception identifier
-        /// </summary>
-        private int exceptionID = 1;
         /// <summary>
         /// The root element
         /// </summary>
         private readonly XElement rootElement;
 
-
+        /// <summary>
+        /// The exception identifier
+        /// </summary>
+        private int exceptionID = 1;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlCategoriser"/> class.
@@ -64,6 +63,7 @@ namespace StoryQ.Execution.Rendering
         public XElement GetOrCreateElementForMethodInfo(MethodBase categoriser)
         {
             var e = this.rootElement;
+
             foreach (var pair in chain)
             {
                 var value = pair.Value(categoriser);
@@ -73,8 +73,10 @@ namespace StoryQ.Execution.Rendering
                     match = new XElement(pair.Key, new XAttribute(AttributeName, value ?? string.Empty));
                     e.Add(match);
                 }
+
                 e = match;
             }
+
             return e;
         }
 

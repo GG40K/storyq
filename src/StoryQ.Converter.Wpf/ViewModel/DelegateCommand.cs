@@ -20,6 +20,10 @@ namespace StoryQ.Converter.Wpf.ViewModel
         public bool CanExecute(object parameter) => true;
 
         // no-op
-        public event EventHandler CanExecuteChanged{add{}remove{}}
+        public event EventHandler CanExecuteChanged
+        {
+            add { }
+            remove { }
+        }
     }
 }

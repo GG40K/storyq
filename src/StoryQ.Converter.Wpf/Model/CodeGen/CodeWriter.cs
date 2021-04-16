@@ -26,10 +26,12 @@ namespace StoryQ.Converter.Wpf.Model.CodeGen
                 this.sb.AppendLine();
                 return;
             }
+
             for (int i = 0; i < this.IndentLevel; i++)
             {
                 this.sb.Append(this.IndentText);
             }
+
             this.sb.AppendLine(s);
         }
 
@@ -43,7 +45,12 @@ namespace StoryQ.Converter.Wpf.Model.CodeGen
         {
             this.WriteLine("{");
             this.IndentLevel++;
-            return new ActionDisposable(() => { this.IndentLevel--; this.WriteLine("}"); });
+            return new ActionDisposable(
+                () =>
+                {
+                    this.IndentLevel--;
+                    this.WriteLine("}");
+                });
         }
 
         public override string ToString() => this.sb.ToString();

@@ -1,4 +1,3 @@
-
 #if NUNIT
 using TestClass = NUnit.Framework.TestFixtureAttribute;
 using TestMethod = NUnit.Framework.TestAttribute;
@@ -26,7 +25,6 @@ namespace StoryQ.Demo
         [TestCategory("Performance")]
         public void Test1()
         {
-
             Outcome outcome = new Story("Blah")
                 .InOrderTo("Blah")
                 .AsA("Blah")
@@ -54,25 +52,24 @@ namespace StoryQ.Demo
 
         private void TheMethodToCall()
         {
-
         }
     }
 
     public class CodeTimer : IDisposable
     {
-        private readonly string _message;
-        private readonly Stopwatch _sw = new Stopwatch();
+        private readonly string message;
+        private readonly Stopwatch sw = new Stopwatch();
+
         public CodeTimer(string message)
         {
-            this._message = message;
-            this._sw.Start();
+            this.message = message;
+            this.sw.Start();
         }
 
         public void Dispose()
         {
-            this._sw.Stop();
-            Console.Out.WriteLine("{0} took {1} msec", this._message, this._sw.ElapsedMilliseconds);
+            this.sw.Stop();
+            Console.Out.WriteLine("{0} took {1} msec", this.message, this.sw.ElapsedMilliseconds);
         }
     }
-
 }

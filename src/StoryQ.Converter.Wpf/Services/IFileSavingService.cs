@@ -2,7 +2,6 @@
 {
     public interface IFileSavingService
     {
-
         /// <summary>
         /// asks the user for a directory
         /// </summary>

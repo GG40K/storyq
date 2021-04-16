@@ -1,5 +1,4 @@
-﻿
-#if NUNIT
+﻿#if NUNIT
 using NUnit.Framework;
 using TestClass = NUnit.Framework.TestFixtureAttribute;
 using TestMethod = NUnit.Framework.TestAttribute;
@@ -16,6 +15,7 @@ namespace StoryQ.Tests.Formatting
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+
     using StoryQ.Formatting;
     using StoryQ.Formatting.Methods;
     using StoryQ.Formatting.Parameters;
@@ -32,72 +32,72 @@ namespace StoryQ.Tests.Formatting
             Action a = SimpleCamelCase;
             Assert.AreEqual("simple camel case", Formatter.FormatMethod(a));
         }
-        
+
         [TestMethod]
         public void SuffixedArgument()
         {
             Action<int> a = SimpleCamelCaseWithArgument;
             Assert.AreEqual("simple camel case with argument(5)", Formatter.FormatMethod(a, 5));
         }
-		
-		[TestMethod]
+
+        [TestMethod]
         public void EnumerableArgumentWithMultipleElements()
         {
             Action<int[]> a = EnumerableArgument;
-            Assert.AreEqual("enumerable argument([1, 2, 3])", Formatter.FormatMethod(a, new [] {1, 2, 3}));
+            Assert.AreEqual("enumerable argument([1, 2, 3])", Formatter.FormatMethod(a, new[] { 1, 2, 3 }));
         }
-		
-		[TestMethod]
+
+        [TestMethod]
         public void EnumerableArgumentWithSingleElement()
         {
             Action<int[]> a = EnumerableArgument;
-            Assert.AreEqual("enumerable argument([1])", Formatter.FormatMethod(a, new [] {1}));
+            Assert.AreEqual("enumerable argument([1])", Formatter.FormatMethod(a, new[] { 1 }));
         }
-		
-		[TestMethod]
+
+        [TestMethod]
         public void EnumerableArgumentWithNoElements()
         {
             Action<int[]> a = EnumerableArgument;
-            Assert.AreEqual("enumerable argument([])", Formatter.FormatMethod(a, new int [0]));
+            Assert.AreEqual("enumerable argument([])", Formatter.FormatMethod(a, new int[0]));
         }
-		
-		[TestMethod]
+
+        [TestMethod]
         public void NestedEnumerable()
         {
-		    var v = new[]
-		                {
-		                    new[] {1, 2, 3},
-		                    new[] {4, 5, 6},
-		                    new[] {7, 8, 9},
-		                };
+            var v = new[]
+                        {
+                            new[] { 1, 2, 3 },
+                            new[] { 4, 5, 6 },
+                            new[] { 7, 8, 9 },
+                        };
 
             var arguments = new object[] { v }; // because of the params argument to FormatMethod
             Assert.AreEqual("two dimensional array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])", Formatter.FormatMethod((Action<int[][]>)TwoDimensionalArray, arguments));
-        }	
-	
-		[TestMethod]
+        }
+
+        [TestMethod]
         public void StringNotEnumerable()
         {
             Assert.AreEqual("pass a string(blah)", Formatter.FormatMethod((Action<string>)PassAString, "blah"));
-        }	
-	
-		[TestMethod]
+        }
+
+        [TestMethod]
         public void EmptyString()
         {
             Assert.AreEqual("pass a string(\"\")", Formatter.FormatMethod((Action<string>)PassAString, ""));
-        }	
+        }
 
-		[TestMethod]
+        [TestMethod]
         public void WhiteSpaceString()
         {
             Assert.AreEqual("pass a string(\" \")", Formatter.FormatMethod((Action<string>)PassAString, "   \n\t "));
-        }	
-	
-		[TestMethod]
+        }
+
+        [TestMethod]
         public void NullString()
         {
-            Assert.AreEqual("pass a string({NULL})", Formatter.FormatMethod((Action<string>)PassAString, new object[]{null}));
-        }		
+            Assert.AreEqual("pass a string({NULL})", Formatter.FormatMethod((Action<string>)PassAString, new object[] { null }));
+        }
 
         [TestMethod]
         public void InlineArgument()
@@ -134,7 +134,7 @@ namespace StoryQ.Tests.Formatting
             Action<string, int> a = SilenceTheFirstArgument_;
             Assert.AreEqual("silence the first argument 1", Formatter.FormatMethod(a, "hellooo?", 1));
         }
-        
+
         [TestMethod]
         public void Apostrophes()
         {
@@ -145,57 +145,46 @@ namespace StoryQ.Tests.Formatting
         [MyMethodFormat]
         private static void SomethingRandom()
         {
-           
         }
 
         private static void Age_Is_Years(int age)
         {
-            
         }
 
         private static void SimpleCamelCase()
         {
-            
         }
 
-        private static void TheUser_BeNotified([BooleanParameterFormat("should", "should not")]bool b)
+        private static void TheUser_BeNotified([BooleanParameterFormat("should", "should not")] bool b)
         {
-
         }
 
         private static void SimpleCamelCaseWithArgument(int x)
         {
-            
         }
 
         private static void EnumerableArgument<T>(IEnumerable<T> enumerable)
         {
-            
         }
 
         private static void TwoDimensionalArray(int[][] array)
         {
-            
         }
 
         private static void AgeIs_Years(int age)
         {
-            
         }
 
         private static void PassAString(string s)
         {
-            
         }
 
         private static void SilenceTheFirstArgument_([Silent] string s, int i)
         {
-            
         }
 
         private static void ThisWontFormat()
         {
-            
         }
 
         private class MyMethodFormatAttribute : MethodFormatAttribute

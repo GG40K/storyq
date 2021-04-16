@@ -102,8 +102,6 @@ namespace StoryQ.Converter.Wpf.Specifications
                 .Setup(x => x.BeginDownloadAsync(It.IsAny<Action<double>>(), It.IsAny<Action<ILocalLanguagePack>>()))
                 .Callback(callback);
 
-
-
             this.converter.CurrentLanguagePack = this.converter.LanguagePacks[3];
         }
 
@@ -136,12 +134,11 @@ namespace StoryQ.Converter.Wpf.Specifications
 
         private void ThereAreLanguagePacksAvailable()
         {
-
             this.localLanguagePacks = new List<Mock<ILocalLanguagePack>>
                                      {
                                          new Mock<ILocalLanguagePack>(),
                                          new Mock<ILocalLanguagePack>(),
-                                         new Mock<ILocalLanguagePack>()
+                                         new Mock<ILocalLanguagePack>(),
                                      };
 
             Mock<ILocalLanguagePack> first = this.localLanguagePacks[0];
@@ -152,22 +149,20 @@ namespace StoryQ.Converter.Wpf.Specifications
             second.Setup(x => x.Name).Returns("pack 2");
             second.Setup(x => x.ParserEntryPoint).Returns("pack 2");
 
-            this.remoteLanguagePacks = new List<Mock<IRemoteLanguagePack>>
-                                      {
-                                          new Mock<IRemoteLanguagePack>(),
-                                          new Mock<IRemoteLanguagePack>(),
-                                          new Mock<IRemoteLanguagePack>()
-                                      };
-            this.remoteLanguagePacks[0].Setup(x => x.Name).Returns("pack 4");
+            this.remoteLanguagePacks =
+                new List<Mock<IRemoteLanguagePack>>
+                {
+                    new Mock<IRemoteLanguagePack>(),
+                    new Mock<IRemoteLanguagePack>(),
+                    new Mock<IRemoteLanguagePack>(),
+                };
 
+            this.remoteLanguagePacks[0].Setup(x => x.Name).Returns("pack 4");
 
             this.languagePackProvider.Setup(x => x.GetLocalLanguagePacks()).Returns(this.localLanguagePacks.Select(x => x.Object));
             this.languagePackProvider.Setup(x => x.GetRemoteLanguagePacks()).Returns(this.remoteLanguagePacks.Select(x => x.Object));
 
             this.converter = new ViewModel.Converter(this.fileSavingService.Object, this.languagePackProvider.Object);
         }
-
-
-
     }
 }

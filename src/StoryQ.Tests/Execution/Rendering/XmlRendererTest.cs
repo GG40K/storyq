@@ -1,9 +1,8 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Xml.Linq;
 using StoryQ.Execution.Rendering;
-using System.Reflection;
-
 using StoryQ.Infrastructure;
 
 #if NUNIT
@@ -16,8 +15,6 @@ using ClassCleanup = NUnit.Framework.TestFixtureTearDownAttribute;
 using ClassInitialize = NUnit.Framework.TestFixtureSetUpAttribute;
 #else
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-
 #endif
 
 namespace StoryQ.Tests.Execution.Rendering
@@ -28,8 +25,6 @@ namespace StoryQ.Tests.Execution.Rendering
     [TestClass]
     public class XmlRendererTest
     {
-
-
         [TestMethod]
         public void TestCategoriser()
         {
@@ -70,7 +65,6 @@ namespace StoryQ.Tests.Execution.Rendering
                 .When(this.Something)
                 .Then(this.SomethingElse);
 
-
             var results = ((IStepContainer)v).SelfAndAncestors().Reverse().Select(x => x.Step.Execute());
             new XmlRenderer(e).Render(results);
 
@@ -90,8 +84,6 @@ namespace StoryQ.Tests.Execution.Rendering
 
         private void Thing()
         {
-
-
         }
     }
 }

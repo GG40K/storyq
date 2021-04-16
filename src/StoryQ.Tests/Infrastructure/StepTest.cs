@@ -1,5 +1,4 @@
-﻿
-#if NUNIT
+﻿#if NUNIT
 using NUnit.Framework;
 
 

@@ -22,6 +22,7 @@ namespace StoryQ.Demo
             // these steps all take strings because they are NEVER for execution
             this.story
                 .WithScenario("Passing shopping cart example")
+
                 // these steps all take Methods because they are meant to be exectuable. Steps that don't throw exceptions will pass
                 .Given(this.IHaveTypedMyCreditCardNumberIntoTheCheckoutPage)
                 .When(this.IClickThe_Button, "Buy")
@@ -42,7 +43,6 @@ namespace StoryQ.Demo
                 // because the following method throws NotImplementedException, this step counts as pending:
                 .Then(this.TheForm_BePostedOverHttpsPending, true).Tag("this one ought to pend")
                 .ExecuteWithReport(MethodBase.GetCurrentMethod());
-
         }
 
         [Test]
@@ -57,7 +57,6 @@ namespace StoryQ.Demo
                 // because it's passing a string into an excecutable step (which normallly expects a method is expected), this step counts as pending:
                 .Then("The form should be posted over https").Tag("this one ought to pend")
                 .ExecuteWithReport(MethodBase.GetCurrentMethod());
-
         }
 
         [Test]
@@ -81,7 +80,6 @@ namespace StoryQ.Demo
         private void TheForm_BePostedOverHttps([BooleanParameterFormat("should", "should not")]bool isHttps)
         {
         }
-
 
         private void TheBrowserPostsMyCreditCardNumberOverTheInternet()
         {
